@@ -83,3 +83,90 @@
 <p lang=""><span>如果BIOS無法識別驅動器或無法加載操作系統，則可能是硬盤故障。</span><span>聽硬盤驅動器；</span><span>您聽到機械的喀噠聲嗎？</span><span>如果這樣做，您的硬盤驅動器可能會發生故障，應盡快更換。</span><span>如果沒有聽到任何咔嗒聲，則表明磁盤上可能存在壞扇區，因此請執行磁盤維護過程，例如“檢查磁盤”（CHKDSK）或“磁盤碎片整理”（DISK DEFRAG）。 </span></p>
 <h1>HW2</h1>
 <h1>HW3</h1>
+<h2><span>Birthday Json傑森生日</span></h2>
+<h4>Exercise 34 (and<span> </span><a href="https://www.practicepython.org/solution/2017/02/25/34-birthday-json-solutions.html">Solution</a>)練習34（和解決方案）</h4>
+<div class="tw-ta-container hide-focus-ring tw-nfl" id="tw-target-rmn-container">This exercise is Part 2 of 4 of the birthday data exercise series. The other exercises are: Part 1, Part 3, and Part 4.</div>
+<div class="tw-ta-container hide-focus-ring tw-nfl"><span>此練習是生日數據練習系列4的第2部分。其他練習是：第1部分，第3部分和第4部分。</span></div>
+<div class="tw-ta-container hide-focus-ring tw-nfl">
+<p>In the<span> </span><a href="https://www.practicepython.org/exercise/2017/01/24/33-birthday-dictionaries.html">previous exercise</a><span> </span>we created a dictionary of famous scientists’ birthdays. In this exercise, modify your program from<span> </span><a href="https://www.practicepython.org/exercise/2017/01/24/33-birthday-dictionaries.html">Part 1</a><span> </span>to load the birthday dictionary from a JSON file on disk, rather than having the dictionary defined in the program.</p>
+<p><strong>Bonus</strong>: Ask the user for another scientist’s name and birthday to add to the dictionary, and update the JSON file you have on disk with the scientist’s name. If you run the program multiple times and keep adding new names, your JSON file should keep getting bigger and bigger.</p>
+<p><span>在上一個練習中，我們創建了著名科學家生日字典。在本練習中，請修改第1部分中的程序，以從磁盤上的JSON文件加載生日字典，而不是在程序中定義字典。 獎勵：要求用戶提供另一個科學家的名字和生日，以添加到詞典中，並使用科學家的名字更新磁盤上的JSON文件。如果您多次運行該程序並繼續添加新名稱，那麼JSON文件應該會越來越大。</span></p>
+<h4 id="discussion">Discussion<span>討論</span></h4>
+<p>In a previous exercise we talked about<span> </span><a href="https://www.practicepython.org/exercise/2014/11/30/21-write-to-a-file.html">how to save information to a .txt file on disk</a>, but in this exercise we are talking about writing a different kind of file format called JSON.</p>
+<p>The JSON file format was developed in the early 2000s as a standard for how web servers would pass data back and forth. It is still used for web server communication today, and it conveniently is also a way we can store dictionary-like data in a file on disk. The JSON format specifies a way to<span> </span><em>serialize</em><span> </span>(turn into a string) a dictionary or list, which then means that string can be written to disk or passed to another application. JSON is meant to store dictionary-like data both in a readable way for humans, and in a compact way that can be read by computers. Because it is a standard format, you can write JSON in one language and read JSON from another language to effectively pass information between the two programs or applications. You can read more about the history of JSON on<span> </span><a href="https://en.wikipedia.org/wiki/JSON">the wikipedia article</a>.</p>
+<pre class="tw-data-text tw-text-large XcVN5d tw-ta" data-placeholder="翻譯" dir="ltr"><span lang="zh-TW">在上一個練習中，我們討論瞭如何將信息保存到磁盤上的.txt文件中，但是在本練習中，我們正在討論編寫另一種稱<br/>為JSON的文件格式。JSON文件格式是在2000年代初期開發的，它是Web服務器如何來回傳遞數據的標準。如今，<br/>它仍然用於Web服務器通信，並且它也是我們可以將類似字典的數據存儲在磁盤上的文件中的一種便捷方式。 JSON<br/>格式指定了一種序列化（轉換為字符串）字典或列表的方法，這意味著可以將字符串寫入磁盤或傳遞給另一個應用程序。 <br/>JSON旨在以人類可讀的方式以及計算機可以讀取的緊湊方式存儲類似字典的數據。因為它是一種標準格式，<br/>所以您可以用一種語言編寫JSON並從另一種語言讀取JSON，以在兩個程序或應用程序之間有效地傳遞信息。<br/>您可以在Wikipedia文章上閱讀有關JSON歷史的更多信息。<br/><span>Here is an example of JSON:</span></span><span lang="zh-TW"><span>這是JSON的示例</span></span></pre>
+<pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Michele"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"shirt_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blue"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"laptops"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lenovo"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"operating_system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ubuntu"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"operating_system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OSX"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"has_a_dog"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"items_on_desk"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"mug"</span><span class="p">,</span><span class="w"> </span><span class="s2">"pen"</span><span class="p">,</span><span class="w"> </span><span class="s2">"monitor"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span></code></pre>
+<p>Notice how you can mix dictionaries and lists. In this example the top-level container is a dictionary, with the keys name, shirt_color, laptops, has_a_dog, and items_on_desk. The keys can be lists, strings, booleans, or other dictionaries. Usually you don’t write JSON by hand (but it is very readable so you easily could). One of my favorite tools to test whether you’ve written valid JSON is this free <span><a href="http://jsonlint.com/">JSON validator</a></span> - just paste your JSON in there and it tells you if it will be read by a program that understands JSON.</p>
+<p>注意如何混合使用字典和列表。在此示例中，頂級容器是字典，鍵名稱為：<span>shirt_color</span>，<span>laptops</span>，<span>has_a_dog</span>和<span>items_on_desk</span>。鍵可以是列表，字符串，布爾值或其他字典。通常，您不需要手工編寫<span>JSON</span>（但它具有很高的可讀性，因此您可以輕鬆編寫）。這個免費的<span>JSON</span>驗證器是我最喜歡的工具，它可以用來測試您是否編寫了有效的<span>JSON-</span>只需將<span>JSON</span>粘貼在其中，它就會告訴您是否可以由理解<span>JSON</span>的程序讀取它。</p>
+<p>There is a built-in Python library for reading and writing JSON files, so you don’t have to worry about how your dictionaries and lists are going to be turned into the right format!</p>
+<p>As long as the data you want to store is either a dictionary or a list of dictionaries, writing JSON is straightforward. First, import the<span> </span><a href="https://docs.python.org/3/library/json.html"><code class="highlighter-rouge">json</code><span> </span>library</a><span> </span>(no installation needed, it is built in to Python) and initialize some dictionary:</p>
+<pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">info_about_me</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"name"</span><span class="p">:</span> <span class="s">"Michele"</span><span class="p">,</span>
+    <span class="s">"has_a_dog"</span><span class="p">:</span> <span class="bp">False</span>
+<span class="p">}</span></code></pre>
+<pre class="tw-data-text tw-text-large XcVN5d tw-ta" data-placeholder="翻譯" dir="ltr" id="tw-target-text"><span lang="zh-TW"></span></pre>
+<p>有一個內置的<span>Python</span>庫，用於讀寫<span>JSON</span>文件，因此您不必擔心字典和列表將如何轉換為正確的格式！</p>
+<p>只要您要存儲的數據是字典還是詞典列表，編寫<span>JSON</span>就很簡單。首先，導入<span>json</span>庫（無需安裝，它內置在<span>Python</span>中）並初始化一些字典：</p>
+<p><span>Then, to save your dictionary to disk you need to open a file and use the </span><code class="highlighter-rouge">json.dump()</code><span><span> </span>method. Remember to use the<span> </span></span><code class="highlighter-rouge">w</code><span><span> </span>flag when opening a file for writing:</span></p>
+<pre><code class="language-python" data-lang="python"><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"info.json"</span><span class="p">,</span> <span class="s">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">info_about_me</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span></code></pre>
+<p>然後，要將字典保存到磁盤，您需要打開一個文件並使用<span>json.dump</span>（）方法。打開文件進行寫入時，請記住使用<span>w</span>標誌：</p>
+<p><span>And you will have saved a file called </span><code class="highlighter-rouge">info.json</code><span><span> </span>in the same directory as your Python program. The dictionary<span> </span></span><code class="highlighter-rouge">info_about_me</code><span><span> </span>will be saved to disk, but the variable name will not be. Basically, JSON won’t remember the name of the variable you saved your dictionary in. If you open the file with a text editor (Notepad++, vim, emacs, Sublime Text, etc.), you will just see:</span></p>
+<pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Michele"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"has_a_dog"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span></code></pre>
+<p>您將在與<span>Python</span>程序相同的目錄中保存了一個名為<span>info.json</span>的文件。字典<span>info_about_me</span>將保存到磁盤，但變量名不會保存。基本上，<span>JSON</span>不會記住保存字典的變量的名稱。如果使用文本編輯器（<span>Notepad ++</span>，<span>vim</span>，<span>emacs</span>，<span>Sublime Text</span>等）打開文件，則只會看到：</p>
+<p><span>Alternatively, you can also manually create a JSON file and type JSON directly into it (passing it through </span><a href="http://jsonlint.com/">the JSON validator</a><span><span> </span>of course!). Just save the file with the<span> </span></span><code class="highlighter-rouge">.json</code><span><span> </span>extension and copy the dictionary directly into the file.</span></p>
+<p>另外，您也可以手動創建<span>JSON</span>文件，然後直接在其中鍵入<span>JSON</span>文件（當然，將其通過<span>JSON</span>驗證器！）。只需保存擴展名為<span>.json</span>的文件，然後將字典直接複製到文件中即可。</p>
+<p><span>Now I can use the information about me that I saved to disk in another program (written in a completely different file) to do something like printing a message. When I saved the JSON file, the variable name of my dictionary was not saved with it, so when I load the JSON file I need to save it into a variable. I can use the same </span><code class="highlighter-rouge">json</code><span><span> </span>library to do this:</span></p>
+<pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">json</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"info.json"</span><span class="p">,</span> <span class="s">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">info</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">info</span><span class="p">[</span><span class="s">"has_a_dog"</span><span class="p">]:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"{} has a dog"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="s">"name"</span><span class="p">]))</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"{} does not have a dog"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="s">"name"</span><span class="p">]))</span></code></pre>
+<p>現在，我可以使用保存在另一個程序中的有關我的信息（以完全不同的文件編寫）來執行類似打印消息的操作。當我保存<span>JSON</span>文件時，字典的變量名並未隨之保存，因此，當我加載<span>JSON</span>文件時，需要將其保存到變量中。我可以使用相同的<span>json</span>庫來執行此操作：</p>
+<p><span>When this program runs, the output should be:</span></p>
+<pre><code class="language-text" data-lang="text">Michele does not have a dog</code></pre>
+<p><span>運行該程序時，輸出應為：</span></p>
+<p><span>Notice how when I loaded the JSON file I used a different name than when I saved it - this is because the variable names don’t get saved together with the JSON data, so you do not have to use the same variable names to save and load JSON.</span></p>
+<p>請注意，加載<span>JSON</span>文件時使用的名稱與保存時使用的名稱不同<span>-</span>這是因為變量名稱不會與<span>JSON</span>數據一起保存，因此您不必使用相同的變量名稱進行保存和加載<span>JSON</span>。</p>
+<p><span>Now that you know about JSON, you can use it to do a number of things:</span></p>
+<p><span>現在，您已經了解了JSON，可以使用它來做很多事情：</span></p>
+<ul>
+<li>Save data to disk that can be shared by people and programs.</li>
+<li>Constantly update data that needs to be shared by re-saving and re-load to disk.</li>
+<li>Save data from a program that a human can read and manually check and fix errors</li>
+<li>
+<p>將數據保存到可以由人員和程序共享的磁盤。</p>
+</li>
+<li>
+<p>不斷更新需要通過重新保存並重新加載到磁盤的數據。</p>
+</li>
+<li>
+<p>保存人類可以讀取的程序中的數據，並手動檢查並修復錯誤。</p>
+</li>
+</ul>
+<pre><code class="language-json" data-lang="json"><span class="p"></span></code></pre>
+</div>
